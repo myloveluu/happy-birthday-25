@@ -1,0 +1,4 @@
+@import "tailwindcss";
+.grid-sizer {
+  width: 33.3333%;
+}

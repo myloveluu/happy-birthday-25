@@ -1,0 +1,70 @@
+---
+import "../styles/global.css";
+const { photos = [] } = Astro.props;
+---
+
+<section class="collage-section">
+  <div id="masonry-grid">
+    <div class="grid-sizer"></div>
+    {
+      photos.map((photo) => (
+        <div class="grid-item">
+          <img src={photo.src} alt={photo.alt} />
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .collage-section {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #masonry-grid {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .grid-sizer,
+  .grid-item {
+    width: 100%;
+  }
+
+  @media (min-width: 384px) {
+    .grid-sizer,
+    .grid-item {
+      width: 48%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .grid-sizer,
+    .grid-item {
+      width: 32%;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .grid-sizer,
+    .grid-item {
+      width: 19%;
+    }
+  }
+
+  .grid-item {
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+  }
+
+  .grid-item img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    object-fit: cover;
+  }
+</style>

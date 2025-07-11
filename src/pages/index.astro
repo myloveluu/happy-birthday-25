@@ -1,0 +1,112 @@
+---
+import Collage from "../components/collage.astro";
+import Intro from "../components/intro.astro";
+import Footer from "../components/footer.astro";
+import { photos } from "../data/photos";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>My Love Lu</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Love+Light&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="space space-1"></div>
+      <div class="space space-2"></div>
+      <div class="space space-3"></div>
+    </div>
+    <main class="w-full">
+      <Intro />
+      <Collage photos={photos} />
+      <Footer />
+    </main>
+  </body>
+
+  <script src="/js/howler.min.js" is:inline></script>
+  <script src="/js/masonry.pkgd.min.js" is:inline></script>
+  <script src="/js/imagesloaded.pkgd.min.js" is:inline></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const grid = document.querySelector("#masonry-grid");
+      const msnry = new Masonry(grid, {
+        itemSelector: ".grid-item",
+        columnWidth: ".grid-sizer",
+        gutter: 16,
+        percentPosition: true,
+      });
+
+      imagesLoaded(grid, () => {
+        msnry.layout();
+      });
+    });
+  </script>
+
+  <script>
+    const COLORS = ["#fff2", "#fff4", "#fff7", "#fffc"];
+
+    const generateSpaceLayer = (
+      size: string = "2px",
+      selector: string,
+      totalStars: number,
+      duration: string
+    ) => {
+      const layer: string[] = [];
+      for (let i = 0; i < totalStars; i++) {
+        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+        const x = Math.floor(Math.random() * 100);
+        const y = Math.floor(Math.random() * 100);
+        layer.push(`${x}vw ${y}vh 0 ${color}, ${x}vw ${y + 100}vh 0 ${color}`);
+      }
+      const container = document.querySelector(selector) as HTMLElement;
+      container.style.setProperty("--space-layer", layer.join(","));
+      container.style.setProperty("--size", size);
+      container.style.setProperty("--duration", duration);
+    };
+
+    generateSpaceLayer("1px", ".space-1", 300, "25s");
+    generateSpaceLayer("2px", ".space-2", 150, "20s");
+    generateSpaceLayer("4px", ".space-3", 50, "15s");
+  </script>
+
+  <style>
+    body {
+      background: #171717;
+    }
+
+    .container {
+      position: fixed;
+      inset: 0;
+    }
+
+    .space {
+      width: var(--size);
+      height: var(--size);
+      background: #fff;
+      box-shadow: var(--space-layer);
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 75%;
+      animation: moveStars var(--duration) linear infinite;
+    }
+
+    @keyframes moveStars {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-100vh);
+      }
+    }
+  </style>
+</html>
