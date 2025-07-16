@@ -13,10 +13,6 @@ import { photos } from "../data/photos";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>My Love Lu</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Love+Light&display=swap"
-      rel="stylesheet"
-    />
   </head>
 
   <body>
@@ -76,6 +72,23 @@ import { photos } from "../data/photos";
     generateSpaceLayer("1px", ".space-1", 300, "25s");
     generateSpaceLayer("2px", ".space-2", 150, "20s");
     generateSpaceLayer("4px", ".space-3", 50, "15s");
+  </script>
+
+  <script>
+    const playlist = ["/audio/incondicional.mp3", "/audio/mohanna.mp3"];
+    let currentIndex = 0;
+
+    const sound = new Howl({
+      src: ["/audio/incondicional.mp3"],
+      autoplay: true,
+      loop: true,
+      volume: 0.05,
+      onloaderror: (id, err) => console.error("Error al cargar audio", err),
+      onplayerror: (id, err) => {
+        console.warn("Error al reproducir audio, intentando reactivar...");
+        sound.once("unlock", () => sound.play());
+      },
+    });
   </script>
 
   <style>

@@ -189,8 +189,43 @@ export const photos = [
         message: "Un mensaje de prueba"
     },
     {
+        id: 28,
+        src: "/photos/photo28.jpeg",
+        alt: "Nuestra primera vez en el zoológico",
+        title: "Nuestra primera vez en el zoológico",
+        message: "Un mensaje de prueba"
+    },
+    {
         id: 29,
         src: "/photos/photo29.jpg",
+        alt: "Nuestra primera vez en el zoológico",
+        title: "Nuestra primera vez en el zoológico",
+        message: "Un mensaje de prueba"
+    },
+    {
+        id: 30,
+        src: "/photos/photo30.jpeg",
+        alt: "Nuestra primera vez en el zoológico",
+        title: "Nuestra primera vez en el zoológico",
+        message: "Un mensaje de prueba"
+    },
+    {
+        id: 31,
+        src: "/photos/photo31.jpeg",
+        alt: "Nuestra primera vez en el zoológico",
+        title: "Nuestra primera vez en el zoológico",
+        message: "Un mensaje de prueba"
+    },
+    {
+        id: 32,
+        src: "/photos/photo32.jpeg",
+        alt: "Nuestra primera vez en el zoológico",
+        title: "Nuestra primera vez en el zoológico",
+        message: "Un mensaje de prueba"
+    },
+    {
+        id: 33,
+        src: "/photos/photo33.jpeg",
         alt: "Nuestra primera vez en el zoológico",
         title: "Nuestra primera vez en el zoológico",
         message: "Un mensaje de prueba"
@@ -247,6 +282,27 @@ export const photos = [
     {
         id: 41,
         src: "/photos/photo41.jpeg",
+        alt: "Nuestra primera vez en el zoológico",
+        title: "Nuestra primera vez en el zoológico",
+        message: "Un mensaje de prueba"
+    },
+    {
+        id: 42,
+        src: "/photos/photo42.jpeg",
+        alt: "Nuestra primera vez en el zoológico",
+        title: "Nuestra primera vez en el zoológico",
+        message: "Un mensaje de prueba"
+    },
+    {
+        id: 43,
+        src: "/photos/photo43.jpeg",
+        alt: "Nuestra primera vez en el zoológico",
+        title: "Nuestra primera vez en el zoológico",
+        message: "Un mensaje de prueba"
+    },
+    {
+        id: 44,
+        src: "/photos/photo44.jpeg",
         alt: "Nuestra primera vez en el zoológico",
         title: "Nuestra primera vez en el zoológico",
         message: "Un mensaje de prueba"
