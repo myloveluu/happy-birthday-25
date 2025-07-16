@@ -13,6 +13,7 @@ const { photos = [] } = Astro.props;
             src={photo.src}
             alt={photo.alt}
             data-message={photo.message}
+            data-title={photo.title}
             class="cursor-pointer"
           />
         </div>
@@ -48,9 +49,14 @@ const { photos = [] } = Astro.props;
     <div
       class="w-full md:w-1/2 h-1/2 md:h-full p-2 flex flex-col justify-center text-white"
     >
+      <h2
+        id="modal-title"
+        class="font-love-light text-xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-4 leading-relaxed text-center max-w-prose"
+      >
+      </h2>
       <p
         id="modal-message"
-        class="font-[Georgia] italic sm:text-lg md:text-xl lg:text-2xl text-pink-100 leading-relaxed text-center max-w-prose"
+        class="font-[Brush_Script_MT,cursive] italic sm:text-lg md:text-xl lg:text-2xl text-pink-100 leading-relaxed text-center max-w-prose"
       >
       </p>
     </div>
@@ -61,6 +67,7 @@ const { photos = [] } = Astro.props;
   const modalOverlay = document.getElementById("modal-overlay");
   const modal = document.getElementById("modal");
   const modalImage = document.getElementById("modal-image");
+  const modalTitle = document.getElementById("modal-title");
   const modalMessage = document.getElementById("modal-message");
   const closeModal = document.getElementById("close-modal");
 
@@ -68,10 +75,12 @@ const { photos = [] } = Astro.props;
     item.addEventListener("click", () => {
       const img = item.querySelector("img");
       const src = img.getAttribute("src");
+      const title = img.getAttribute("data-title");
       const message = img.getAttribute("data-message");
 
       modalImage.src = src;
       modalMessage.textContent = message;
+      modalTitle.textContent = title;
 
       modalOverlay.classList.remove("hidden");
       setTimeout(() => {
@@ -146,5 +155,9 @@ const { photos = [] } = Astro.props;
     height: auto;
     border-radius: 0.75rem;
     object-fit: cover;
+  }
+
+  .font-love-light {
+    font-family: "Love Light", cursive;
   }
 </style>
